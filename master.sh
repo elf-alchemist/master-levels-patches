@@ -30,12 +30,12 @@ source_dir="${PWD}/source"
 master_tar="${PWD}/master.tar"
 
 vcdiff="${PWD}/delta/masterpack.vcdiff"
+vcdiff_freedoom="${PWD}/delta/masterpack-freedoom.vcdiff"
 vcdiff_psx="${PWD}/delta/masterpack-psx.vcdiff"
-vcdiff_fd="${PWD}/delta/masterpack-freedoom.vcdiff"
 
 wad="${PWD}/output/masterpack.wad"
+wad_freedoom="${PWD}/output/masterpack-freedoom.wad"
 wad_psx="${PWD}/output/masterpack-psx.wad"
-wad_fd="${PWD}/output/masterpack-freedoom.wad"
 
 cd "$source_dir"
 
@@ -91,4 +91,6 @@ sha256sum --status -c <<EOF 2>/dev/null || tar_checksum_error
 SHA256 (master.tar) = 19d0b8e4289d75e04f3dd799024f930e22c1e1b1f1be29eca3673135a6723b7d
 EOF
 
-xdelta3 -d -s "${master_tar}" "${vcdiff}" "${wad}"
+xdelta3 -d -s "${master_tar}" "${vcdiff}"          "${wad}"
+xdelta3 -d -s "${master_tar}" "${vcdiff_freedoom}" "${wad_freedoom}"
+xdelta3 -d -s "${master_tar}" "${vcdiff_psx}"      "${wad_psx}"
