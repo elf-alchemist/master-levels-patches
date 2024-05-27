@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: Unlicnese
 # SPDX-FileCopyrightText: Copyright 2024 Guilherme M. Miranda <alchemist.software@proton.me>
 
 # Bash strict mode - Exit early, instead of failing later
@@ -28,6 +28,14 @@ EOF
 base_dir="${PWD}"
 source_dir="${PWD}/source"
 master_tar="${PWD}/master.tar"
+
+vcdiff="${PWD}/delta/masterpack.vcdiff"
+vcdiff_psx="${PWD}/delta/masterpack-psx.vcdiff"
+vcdiff_fd="${PWD}/delta/masterpack-freedoom.vcdiff"
+
+wad="${PWD}/output/masterpack.wad"
+wad_psx="${PWD}/output/masterpack-psx.wad"
+wad_fd="${PWD}/output/masterpack-freedoom.wad"
 
 cd "$source_dir"
 
@@ -82,3 +90,5 @@ cd "${base_dir}"
 sha256sum --status -c <<EOF 2>/dev/null || tar_checksum_error
 SHA256 (master.tar) = 19d0b8e4289d75e04f3dd799024f930e22c1e1b1f1be29eca3673135a6723b7d
 EOF
+
+xdelta3 -d -s "${master_tar}" "${vcdiff}" "${wad}"
