@@ -16,10 +16,16 @@ vcdiff="${PWD}/delta/masterpack.vcdiff"
 vcdiff_freedoom="${PWD}/delta/masterpack-freedoom.vcdiff"
 vcdiff_psx="${PWD}/delta/masterpack-psx.vcdiff"
 
+vcdiff_remaster="${PWD}/delta/masterpack-remaster.vcdiff"
+
 wad="${PWD}/output/masterpack.wad"
 wad_freedoom="${PWD}/output/masterpack-freedoom.wad"
 wad_psx="${PWD}/output/masterpack-psx.wad"
 
+wad_remaster="${PWD}/output/masterpack-remaster.wad"
+
 xdelta3 -e -f -s "${master_tar}" "${wad}"          "${vcdiff}"
 xdelta3 -e -f -s "${master_tar}" "${wad_freedoom}" "${vcdiff_freedoom}"
 xdelta3 -e -f -s "${master_tar}" "${wad_psx}"      "${vcdiff_psx}"
+
+xdelta3 -e -f -s "${master_tar}" "${wad_remaster}" "${vcdiff_remaster}"
