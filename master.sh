@@ -27,19 +27,21 @@ EOF
 
 base_dir="${PWD}"
 source_dir="${PWD}/source"
+output_dir="${PWD}/output"
+vcdiff_dir="${PWD}/vcdiff"
 master_tar="${PWD}/master.tar"
 
-vcdiff="${PWD}/vcdiff/masterpack.vcdiff"
-vcdiff_freedoom="${PWD}/vcdiff/masterpack-freedoom.vcdiff"
-vcdiff_psx="${PWD}/vcdiff/masterpack-psx.vcdiff"
+vcdiff="${vcdiff_dir}/masterpack.vcdiff"
+vcdiff_freedoom="${vcdiff_dir}/masterpack-freedoom.vcdiff"
+vcdiff_psx="${vcdiff_dir}/masterpack-psx.vcdiff"
 
-vcdiff_remaster="${PWD}/vcdiff/masterpack-remaster.vcdiff"
+vcdiff_remaster="${vcdiff_dir}/masterpack-remaster.vcdiff"
 
-wad="${PWD}/output/masterpack.wad"
-wad_freedoom="${PWD}/output/masterpack-freedoom.wad"
-wad_psx="${PWD}/output/masterpack-psx.wad"
+wad="${output_dir}/masterpack.wad"
+wad_freedoom="${output_dir}/masterpack-freedoom.wad"
+wad_psx="${output_dir}/masterpack-psx.wad"
 
-wad_remaster="${PWD}/output/masterpack-remaster.wad"
+wad_remaster="${output_dir}/masterpack-remaster.wad"
 
 cd "$source_dir"
 
@@ -94,6 +96,8 @@ cd "${base_dir}"
 sha256sum --status -c <<EOF 2>/dev/null || tar_checksum_error
 SHA256 (master.tar) = 8a9bdb02828eeb927fe2785841889abe676868c9d2b586905e936897b117bdd0
 EOF
+
+if [ ! -d "$output_dir" ]; then mkdir "$output_dir"; fi
 
 xdelta3 -d -f -s "${master_tar}" "${vcdiff}"          "${wad}"
 xdelta3 -d -f -s "${master_tar}" "${vcdiff_freedoom}" "${wad_freedoom}"
