@@ -29,11 +29,11 @@ base_dir="${PWD}"
 source_dir="${PWD}/source"
 master_tar="${PWD}/master.tar"
 
-vcdiff="${PWD}/delta/masterpack.vcdiff"
-vcdiff_freedoom="${PWD}/delta/masterpack-freedoom.vcdiff"
-vcdiff_psx="${PWD}/delta/masterpack-psx.vcdiff"
+vcdiff="${PWD}/vcdiff/masterpack.vcdiff"
+vcdiff_freedoom="${PWD}/vcdiff/masterpack-freedoom.vcdiff"
+vcdiff_psx="${PWD}/vcdiff/masterpack-psx.vcdiff"
 
-vcdiff_remaster="${PWD}/delta/masterpack-remaster.vcdiff"
+vcdiff_remaster="${PWD}/vcdiff/masterpack-remaster.vcdiff"
 
 wad="${PWD}/output/masterpack.wad"
 wad_freedoom="${PWD}/output/masterpack-freedoom.wad"
@@ -95,8 +95,8 @@ sha256sum --status -c <<EOF 2>/dev/null || tar_checksum_error
 SHA256 (master.tar) = 8a9bdb02828eeb927fe2785841889abe676868c9d2b586905e936897b117bdd0
 EOF
 
-# xdelta3 -d -f -s "${master_tar}" "${vcdiff}"          "${wad}"
-# xdelta3 -d -f -s "${master_tar}" "${vcdiff_freedoom}" "${wad_freedoom}"
-# xdelta3 -d -f -s "${master_tar}" "${vcdiff_psx}"      "${wad_psx}"
+xdelta3 -d -f -s "${master_tar}" "${vcdiff}"          "${wad}"
+xdelta3 -d -f -s "${master_tar}" "${vcdiff_freedoom}" "${wad_freedoom}"
+xdelta3 -d -f -s "${master_tar}" "${vcdiff_psx}"      "${wad_psx}"
 
-# xdelta3 -d -f -s "${master_tar}" "${vcdiff_remaster}" "${wad_remaster}"
+xdelta3 -d -f -s "${master_tar}" "${vcdiff_remaster}" "${wad_remaster}"

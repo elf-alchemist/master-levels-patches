@@ -12,11 +12,11 @@ base_dir="${PWD}"
 source_dir="${PWD}/source"
 master_tar="${PWD}/master.tar"
 
-vcdiff="${PWD}/delta/masterpack.vcdiff"
-vcdiff_freedoom="${PWD}/delta/masterpack-freedoom.vcdiff"
-vcdiff_psx="${PWD}/delta/masterpack-psx.vcdiff"
+vcdiff="${PWD}/vcdiff/masterpack.vcdiff"
+vcdiff_freedoom="${PWD}/vcdiff/masterpack-freedoom.vcdiff"
+vcdiff_psx="${PWD}/vcdiff/masterpack-psx.vcdiff"
 
-vcdiff_remaster="${PWD}/delta/masterpack-remaster.vcdiff"
+vcdiff_remaster="${PWD}/vcdiff/masterpack-remaster.vcdiff"
 
 wad="${PWD}/output/masterpack.wad"
 wad_freedoom="${PWD}/output/masterpack-freedoom.wad"
