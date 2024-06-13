@@ -31,17 +31,17 @@ output_dir="${PWD}/output"
 vcdiff_dir="${PWD}/vcdiff"
 master_tar="${PWD}/master.tar"
 
-vcdiff="${vcdiff_dir}/masterpack.vcdiff"
+vcdiff_vanilla="${vcdiff_dir}/masterpack-vanilla.vcdiff"
 vcdiff_freedoom="${vcdiff_dir}/masterpack-freedoom.vcdiff"
 vcdiff_psx="${vcdiff_dir}/masterpack-psx.vcdiff"
 
-vcdiff_remaster="${vcdiff_dir}/masterpack-remaster.vcdiff"
+vcdiff="${vcdiff_dir}/masterpack.vcdiff"
 
-wad="${output_dir}/masterpack.wad"
+wad_vanilla="${output_dir}/masterpack-vanilla.wad"
 wad_freedoom="${output_dir}/masterpack-freedoom.wad"
 wad_psx="${output_dir}/masterpack-psx.wad"
 
-wad_remaster="${output_dir}/masterpack-remaster.wad"
+wad="${output_dir}/masterpack.wad"
 
 cd "$source_dir"
 
@@ -99,8 +99,9 @@ EOF
 
 if [ ! -d "$output_dir" ]; then mkdir "$output_dir"; fi
 
-xdelta3 -d -f -s "${master_tar}" "${vcdiff}"          "${wad}"
+xdelta3 -d -f -s "${master_tar}" "${vcdiff_vanilla}"  "${wad_vanilla}"
 xdelta3 -d -f -s "${master_tar}" "${vcdiff_freedoom}" "${wad_freedoom}"
 xdelta3 -d -f -s "${master_tar}" "${vcdiff_psx}"      "${wad_psx}"
 
-xdelta3 -d -f -s "${master_tar}" "${vcdiff_remaster}" "${wad_remaster}"
+xdelta3 -d -f -s "${master_tar}" "${vcdiff}"          "${wad}"
+
